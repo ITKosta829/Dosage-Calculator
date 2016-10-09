@@ -2,11 +2,14 @@ package com.hughesmedicine.gregh.pharmacyapp;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 /**
@@ -24,8 +27,13 @@ public class FragTabTwo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        mView = inflater.inflate(R.layout.frag_tab_two, container, false);
+        final String blogURL = "http://www.hughesmedicine.com/";
 
+        mView = inflater.inflate(R.layout.frag_tab_two, container, false);
+        WebView webView = (WebView) mView.findViewById(R.id.web_view);
+        webView.setWebViewClient(new WebViewClient());
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadUrl(blogURL);
 
         return mView;
     }
@@ -52,14 +60,5 @@ public class FragTabTwo extends Fragment {
         super.onStop();
     }
 
-    public void setFonts() {
-        Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "ANDYB.TTF");
-
-        TextView tv1 = (TextView) mView.findViewById(R.id.camera_details);
-        tv1.setTypeface(tf);
-        TextView tv2 = (TextView) mView.findViewById(R.id.gallery_details);
-        tv2.setTypeface(tf);
-
-    }
 
 }

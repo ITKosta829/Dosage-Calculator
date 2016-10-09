@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_below="@+id/Gender_Fields"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         tools:background="#000000" />
 
     <LinearLayout
@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Break_1"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:orientation="horizontal">
 
         <TextView
@@ -77,7 +77,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_below="@+id/Age_Fields"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         tools:background="#000000" />
 
     <LinearLayout
@@ -85,7 +85,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Break_2"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:orientation="horizontal">
 
         <TextView
@@ -125,7 +125,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_below="@+id/SCr_Fields"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         tools:background="#000000" />
 
     <LinearLayout
@@ -133,7 +133,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Break_3"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:orientation="horizontal">
 
         <TextView
@@ -172,7 +172,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_below="@+id/Height_Fields"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         tools:background="#000000" />
 
     <LinearLayout
@@ -180,7 +180,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Break_4"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:orientation="horizontal">
 
         <TextView
@@ -219,7 +219,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_below="@+id/Weight_Fields"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         tools:background="#000000" />
 
     <LinearLayout
@@ -227,7 +227,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Break_5"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:orientation="horizontal">
 
         <TextView
@@ -278,7 +278,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_below="@+id/Dose_Notice"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         tools:background="#000000" />
 
     <LinearLayout
@@ -286,7 +286,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Break_6"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:orientation="horizontal">
 
         <TextView
@@ -347,7 +347,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_below="@+id/Frequency_Notice"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         tools:background="#000000" />
 
     <LinearLayout
@@ -355,7 +355,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/Break_7"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:orientation="horizontal">
 
         <Button
@@ -363,22 +363,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:textColor="#ffffff"
             android:background="@drawable/black_rounded_button"
-            android:text="Calculate" />
+            android:text="Calculate"
+            android:textColor="#ffffff" />
 
         <Button
             android:id="@+id/Clear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:background="@drawable/black_rounded_button"
             android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:text="Clear" />
+            android:background="@drawable/black_rounded_button"
+            android:text="Clear"
+            android:textColor="#ffffff" />
 
 
     </LinearLayout>
