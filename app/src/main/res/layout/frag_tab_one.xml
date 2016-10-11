@@ -66,6 +66,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
             android:inputType="number"
             android:paddingEnd="10dp"
             android:paddingStart="5dp" />
@@ -104,7 +105,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:inputType="number"
+            android:gravity="center_horizontal"
+            android:inputType="numberDecimal"
             android:paddingStart="5dp" />
 
         <TextView
@@ -152,6 +154,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
             android:inputType="number"
             android:paddingStart="5dp" />
 
@@ -199,6 +202,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
             android:inputType="number"
             android:paddingStart="5dp" />
 
@@ -241,12 +245,14 @@
             android:textColor="#000000"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/Dose_Entry"
+        <Spinner
+            android:id="@+id/Dose_Spinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
-            android:inputType="number"
+            android:gravity="center"
             android:paddingStart="5dp" />
 
         <TextView
@@ -310,12 +316,14 @@
             android:textColor="#000000"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/Frequency_Entry"
+        <Spinner
+            android:id="@+id/Frequency_Spinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
-            android:inputType="number"
+            android:gravity="center"
             android:paddingStart="5dp" />
 
         <TextView
@@ -354,7 +362,7 @@
         android:id="@+id/Buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Break_7"
+        android:layout_below="@+id/Break_7"
         android:layout_marginTop="3dp"
         android:orientation="horizontal">
 

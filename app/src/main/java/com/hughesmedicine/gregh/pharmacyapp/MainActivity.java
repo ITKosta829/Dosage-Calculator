@@ -20,11 +20,16 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     TabLayout tabLayout;
     ViewPager viewPager;
+    DataHandler DH;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DH = DataHandler.getInstance();
+        DH.mContext = MainActivity.this;
+        DH.FM = getSupportFragmentManager();
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
