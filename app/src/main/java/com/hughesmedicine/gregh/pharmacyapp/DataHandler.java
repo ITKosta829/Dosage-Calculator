@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.View;
 
 import java.io.File;
@@ -22,13 +23,16 @@ import java.util.Date;
  */
 public class DataHandler {
 
+    final String MYTAG = "SEE ALL VALUES";
+
     public Context mContext;
     public Activity mActivity;
     public FragmentManager FM;
     private ArrayList<String> dose, frequency;
-    public String id,gender, heightUnit, weightUnit,displayHeight, displayWeight;
-    public int age, doseSelection, frequencySelection;
-    public double SCr, calcHeight, calcWeight;
+    public String id, gender, heightUnit, weightUnit, displayHeight, displayWeight, displayIdealWeight, displayCrCl;
+    public int age, frequencySelection;
+    public double doseSelection, SCr, calcHeight, calcWeight, idealBodyWeight, dosingBodyWeight, dosingCreatinine;
+    public double CrCl_mLmin, CrCl_Lhr, Vd_L, ke, halfLife, infusionTime, TTSS, ESST;
 
     private static DataHandler instance = new DataHandler();
 
@@ -42,15 +46,15 @@ public class DataHandler {
         return instance;
     }
 
-    public ArrayList<String> getDose(){
+    public ArrayList<String> getDose() {
         return dose;
     }
 
-    public ArrayList<String> getFrequency(){
+    public ArrayList<String> getFrequency() {
         return frequency;
     }
 
-    public void populateLists(){
+    public void populateLists() {
         dose.add("500");
         dose.add("750");
         dose.add("1000");
@@ -112,27 +116,150 @@ public class DataHandler {
         mActivity.startActivity(intent);
     }
 
-    public void setCalculationValues(){
+    public void setCalculationValues() {
 
-        if(heightUnit.equals("inches")){
+        if (heightUnit.equals("inches")) {
             int height = Integer.valueOf(displayHeight);
-            calcHeight = round((height * 2.54),1);
+            calcHeight = round((height * 2.54), 1);
         }
-        if(heightUnit.equals("cm")){
+        if (heightUnit.equals("cm")) {
             calcHeight = Double.valueOf(displayHeight);
         }
-        if(weightUnit.equals("lbs")){
+        if (weightUnit.equals("lbs")) {
             int weight = Integer.valueOf(displayWeight);
             calcWeight = round((weight / 2.2), 1);
         }
-        if(weightUnit.equals("kg")){
+        if (weightUnit.equals("kg")) {
             calcWeight = Double.valueOf(displayWeight);
         }
 
+        Log.d(MYTAG, "Actual Weight: "+calcWeight);
+        Log.d(MYTAG, "Actual Height: "+calcHeight);
+
+        setIdealBodyWeight();
+        setDosingCreatinine();
+        setVd_L();
 
     }
 
+    private void setIdealBodyWeight() {
 
+        if (gender.equals("MALE")) {
+            idealBodyWeight = 50 + 2.3 * ((calcHeight / 2.54) - 60);
+        }
+
+        if (gender.equals("FEMALE")) {
+            idealBodyWeight = 45.5 + 2.3 * ((calcHeight / 2.54) - 60);
+        }
+
+        if (weightUnit.equals("lbs")) {
+            displayIdealWeight = String.valueOf(round((idealBodyWeight * 2.2), 1));
+        }
+        if (weightUnit.equals("kg")) {
+            displayIdealWeight = String.valueOf(round(idealBodyWeight, 1));
+        }
+
+        Log.d(MYTAG, "Ideal Weight: "+idealBodyWeight);
+
+        setDosingBodyWeight();
+    }
+
+    private void setDosingBodyWeight() {
+        if (calcWeight < idealBodyWeight) {
+            dosingBodyWeight = calcWeight;
+        } else {
+            dosingBodyWeight = idealBodyWeight;
+        }
+        Log.d(MYTAG, "Dosing Body Weight: "+dosingBodyWeight);
+    }
+
+    private void setDosingCreatinine() {
+        if (age >= 65 && SCr < 1.0){
+            dosingCreatinine = 1.0;
+        } else {
+            dosingCreatinine = SCr;
+        }
+        Log.d(MYTAG, "Dosing Creatinine: "+dosingCreatinine);
+        setCrCl_ml_min();
+    }
+
+    private void setCrCl_ml_min(){
+        if (gender.equals("FEMALE")) {
+            CrCl_mLmin = ((140-age)*dosingBodyWeight/(72*dosingCreatinine))*0.85;
+        } else {
+            CrCl_mLmin = (140-age)*dosingBodyWeight/(72*dosingCreatinine);
+        }
+        Log.d(MYTAG, "CrCl mL/min: "+CrCl_mLmin);
+        displayCrCl = String.valueOf(round(CrCl_mLmin,2));
+        setCrCl_L_hr();
+    }
+
+    private void setCrCl_L_hr(){
+        CrCl_Lhr = CrCl_mLmin * 0.06;
+        Log.d(MYTAG, "CrCl L/hr: "+CrCl_Lhr);
+    }
+
+    private void setVd_L(){
+        Vd_L = calcWeight * 0.7;
+        Log.d(MYTAG, "Vd L: "+Vd_L);
+
+        setKE();
+    }
+
+    private void setKE(){
+        ke = CrCl_Lhr / Vd_L;
+        Log.d(MYTAG, "ke: "+ke);
+
+        setHalfLife();
+    }
+
+    private void setHalfLife(){
+        halfLife = 0.693 / ke;
+        halfLife = round(halfLife, 1);
+        Log.d(MYTAG, "Half Life: "+halfLife);
+
+        setTimeToSteadyState();
+    }
+
+    private void setTimeToSteadyState(){
+        TTSS = 4 * halfLife;
+        TTSS = round(TTSS, 2);
+        Log.d(MYTAG, "Time to Steady State: "+TTSS);
+
+        setInfusionTime();
+        setEstimatedSteadyStateTrough();
+    }
+
+    private void setInfusionTime(){
+        Log.d(MYTAG, "DoseSelection: " + doseSelection);
+        infusionTime = doseSelection / 1000;
+        Log.d(MYTAG, "InfusionTime: " + infusionTime);
+    }
+
+    private void setEstimatedSteadyStateTrough(){
+
+        Double a, b, c, d;
+
+        //ESST = (((doseSelection/infusionTime/CrCl_Lhr)*(EXP(-ke*(frequencySelection-infusionTime))*(1-EXP(-ke*infusionTime))/(1-EXP(-ke*frequencySelection)))));
+
+        a = (doseSelection/infusionTime/CrCl_Lhr);
+        Log.d("ESST", "a: " + doseSelection + " / " + infusionTime + " / " + CrCl_Lhr);
+        Log.d("ESST", "a: " + a);
+
+        b = (Math.exp(-ke*(frequencySelection-infusionTime)));
+        Log.d("ESST", "b: " + b);
+
+        c = 1-Math.exp(-ke*infusionTime);
+        Log.d("ESST", "c: " + c);
+
+        d = 1-Math.exp(-ke*frequencySelection);
+        Log.d("ESST", "d: " + d);
+
+        ESST = (a * b * c) / d;
+
+        ESST = round(ESST,3);
+
+    }
 
 
 }

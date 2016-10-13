@@ -21,10 +21,8 @@
             android:id="@+id/Results_ID"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:paddingEnd="5dp" />
-
+            android:layout_weight="3"
+            android:gravity="center" />
 
     </LinearLayout>
 
@@ -54,8 +52,23 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="end"
-            android:paddingEnd="5dp" />
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="5dp"
+            android:text="Height:"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Results_Height"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center" />
+
 
     </LinearLayout>
 
@@ -85,8 +98,22 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="end"
-            android:paddingEnd="5dp" />
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="5dp"
+            android:text="Weight:"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Results_Weight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center" />
 
     </LinearLayout>
 
@@ -116,39 +143,22 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="end"
-            android:paddingEnd="5dp" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="2dp"
-        android:background="#000000"
-        android:paddingEnd="5dp"
-        android:paddingStart="5dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            android:gravity="center" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:paddingStart="5dp"
-            android:text="Height:"
+            android:text="Ideal Weight:"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/Results_Height"
+            android:id="@+id/Results_Ideal_Weight"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="end"
-            android:paddingEnd="5dp" />
+            android:gravity="center" />
 
     </LinearLayout>
 
@@ -168,38 +178,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingStart="5dp"
-            android:text="Weight:"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/Results_Weight"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:paddingEnd="5dp" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="2dp"
-        android:background="#000000"
-        android:paddingEnd="5dp"
-        android:paddingStart="5dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:paddingStart="5dp"
             android:text="CrCl (mL/min):"
             android:textStyle="bold" />
@@ -209,7 +188,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="end"
+            android:gravity="center"
             android:paddingEnd="5dp" />
 
     </LinearLayout>
@@ -230,7 +209,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:paddingStart="5dp"
             android:text="Half-Life (t1/2 hr):"
             android:textStyle="bold" />
@@ -240,7 +219,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="end"
+            android:gravity="center"
             android:paddingEnd="5dp" />
 
     </LinearLayout>
@@ -261,7 +240,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:paddingStart="5dp"
             android:text="Time to Steady State:"
             android:textStyle="bold" />
@@ -271,7 +250,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="end"
+            android:gravity="center"
             android:paddingEnd="5dp" />
 
     </LinearLayout>
@@ -292,7 +271,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:paddingStart="5dp"
             android:text="Estimated Steady State Trough (mg/dL):"
             android:textStyle="bold" />
@@ -302,23 +281,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="end"
+            android:background="#ffff00"
+            android:gravity="center"
             android:paddingEnd="5dp" />
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="2dp"
-        android:background="#000000"
-        android:paddingEnd="5dp"
-        android:paddingStart="5dp" />
-
-    <TextView
-        android:id="@+id/Results_Time_Stamp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal" />
 
 </LinearLayout>

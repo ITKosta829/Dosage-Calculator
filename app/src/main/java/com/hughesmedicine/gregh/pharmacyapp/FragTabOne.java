@@ -32,6 +32,8 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
 
     Toast mToast;
 
+    final String MYTAG = "SEE ALL VALUES";
+
     public FragTabOne() {
         // Required empty public constructor
     }
@@ -71,9 +73,8 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
         doseSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                DH.doseSelection = Integer.valueOf(doseSpinner.getSelectedItem().toString());
-                dosePosition = i;
-                //Log.d("DOSE SPINNER", DH.doseSelection + " " + dosePosition);
+                DH.doseSelection = Double.valueOf(doseSpinner.getSelectedItem().toString());
+                Log.d(MYTAG, "Dose Selection: "+DH.doseSelection);
             }
 
             @Override
@@ -89,8 +90,7 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 DH.frequencySelection = Integer.valueOf(frequencySpinner.getSelectedItem().toString());
-                frequencyPosition = i;
-                //Log.d("FREQUENCY SPINNER", DH.frequencySelection + " " + frequencyPosition);
+                Log.d(MYTAG, "Dose Frequency: "+DH.frequencySelection);
             }
 
             @Override
@@ -176,7 +176,7 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
         String s = ET_SCr.getText().toString();
         String h = ET_Height.getText().toString();
         String w = ET_Weight.getText().toString();
-        
+
         if (a.equals("") || s.equals("") || h.equals("") || w.equals("")) {
             mToast.setText("Please enter missing values.");
             mToast.show();

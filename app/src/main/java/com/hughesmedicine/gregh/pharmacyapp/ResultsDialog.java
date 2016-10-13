@@ -24,7 +24,7 @@ public class ResultsDialog extends DialogFragment {
 
     DataHandler DH;
     AlertDialog resultText;
-    TextView ID, Gender, Age, SCr, Height, Weight, CrCl, HalfLife, TTSS, ESST, TimeStamp;
+    TextView ID, Gender, Age, SCr, Height, Weight, idealWeight, CrCl, HalfLife, TTSS, ESST;
     final private int REQUEST_CODE_ASK_PERMISSIONS = 1;
 
     @Override
@@ -41,11 +41,11 @@ public class ResultsDialog extends DialogFragment {
         SCr = (TextView) v.findViewById(R.id.Results_SCr);
         Height = (TextView) v.findViewById(R.id.Results_Height);
         Weight = (TextView) v.findViewById(R.id.Results_Weight);
+        idealWeight = (TextView) v.findViewById(R.id.Results_Ideal_Weight);
         CrCl = (TextView) v.findViewById(R.id.Results_CrCl);
         HalfLife = (TextView) v.findViewById(R.id.Results_Half_Life);
         TTSS = (TextView) v.findViewById(R.id.Results_Time_to_Steady);
         ESST = (TextView) v.findViewById(R.id.Results_Estimated_Steady_State);
-        TimeStamp = (TextView) v.findViewById(R.id.Results_Time_Stamp);
 
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
@@ -57,11 +57,12 @@ public class ResultsDialog extends DialogFragment {
         SCr.setText(String.valueOf(DH.SCr));
         Height.setText(String.valueOf(DH.displayHeight) + " " + DH.heightUnit);
         Weight.setText(String.valueOf(DH.displayWeight) + " " + DH.weightUnit);
-        CrCl.setText("");
-        HalfLife.setText("");
-        TTSS.setText("");
-        ESST.setText("");
-        //TimeStamp.setText(currentTime);
+        idealWeight.setText(DH.displayIdealWeight + " " + DH.weightUnit);
+        CrCl.setText(DH.displayCrCl);
+        HalfLife.setText(String.valueOf(DH.halfLife));
+        TTSS.setText(String.valueOf(DH.TTSS));
+        ESST.setText(String.valueOf(DH.ESST));
+
 
         AlertDialog.Builder b;
         b = new AlertDialog.Builder(getActivity());
