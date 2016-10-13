@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         DH = DataHandler.getInstance();
         DH.mContext = MainActivity.this;
+        DH.mActivity = this;
         DH.FM = getSupportFragmentManager();
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -71,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new FragTabOne(), "Calculator");
-        adapter.addFragment(new FragTabTwo(), "Blog");
+        adapter.addFragment(new FragTabOne(), "Select Dose\nEstimate Trough");
+        adapter.addFragment(new FragTabThree(), "Website");
         viewPager.setAdapter(adapter);
 
     }

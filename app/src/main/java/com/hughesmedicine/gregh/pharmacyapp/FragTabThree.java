@@ -1,8 +1,6 @@
 package com.hughesmedicine.gregh.pharmacyapp;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,16 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.TextView;
 
 /**
  * Created by DeanC on 7/19/2016.
  */
-public class FragTabTwo extends Fragment {
+public class FragTabThree extends Fragment {
 
     View mView;
 
-    public FragTabTwo() {
+    public FragTabThree() {
         // Required empty public constructor
     }
 
@@ -29,7 +26,7 @@ public class FragTabTwo extends Fragment {
 
         final String blogURL = "http://www.hughesmedicine.com/";
 
-        mView = inflater.inflate(R.layout.frag_tab_two, container, false);
+        mView = inflater.inflate(R.layout.frag_tab_three, container, false);
         WebView webView = (WebView) mView.findViewById(R.id.web_view);
         webView.setWebViewClient(new WebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
@@ -45,13 +42,13 @@ public class FragTabTwo extends Fragment {
 
     @Override
     public void onPause() {
-        Log.d("MyTag", "Fragment Two Paused");
+        Log.d("MyTag", "Fragment Three Paused");
         super.onPause();
     }
 
     @Override
     public void onResume() {
-        Log.d("MyTag", "Fragment Two Resumed");
+        Log.d("MyTag", "Fragment Three Resumed");
         super.onResume();
     }
 
