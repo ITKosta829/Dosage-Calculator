@@ -6,9 +6,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,18 +54,20 @@ public class ResultsDialog extends DialogFragment {
         ID.setText(DH.id);
         Gender.setText(DH.gender);
         Age.setText(String.valueOf(DH.age));
-        SCr.setText(String.valueOf(DH.SCr) + "mg/dL");
-        Height.setText(String.valueOf(DH.height) + " " + DH.heightUnit);
-        Weight.setText(String.valueOf(DH.weight) + " " + DH.weightUnit);
+        SCr.setText(String.valueOf(DH.SCr));
+        Height.setText(String.valueOf(DH.displayHeight) + " " + DH.heightUnit);
+        Weight.setText(String.valueOf(DH.displayWeight) + " " + DH.weightUnit);
         CrCl.setText("");
         HalfLife.setText("");
         TTSS.setText("");
         ESST.setText("");
-        TimeStamp.setText(currentTime);
+        //TimeStamp.setText(currentTime);
 
         AlertDialog.Builder b;
         b = new AlertDialog.Builder(getActivity());
         b.setView(v)
+
+                .setTitle(currentTime)
 
                 .setPositiveButton("Save",
                         new DialogInterface.OnClickListener() {

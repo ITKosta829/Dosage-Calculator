@@ -26,9 +26,9 @@ public class DataHandler {
     public Activity mActivity;
     public FragmentManager FM;
     private ArrayList<String> dose, frequency;
-    public String id,gender, heightUnit, weightUnit;
+    public String id,gender, heightUnit, weightUnit,displayHeight, displayWeight;
     public int age, doseSelection, frequencySelection;
-    public double SCr, height, weight;
+    public double SCr, calcHeight, calcWeight;
 
     private static DataHandler instance = new DataHandler();
 
@@ -110,6 +110,26 @@ public class DataHandler {
         Uri uri = Uri.fromFile(imageFile);
         intent.setDataAndType(uri, "image/*");
         mActivity.startActivity(intent);
+    }
+
+    public void setCalculationValues(){
+
+        if(heightUnit.equals("inches")){
+            int height = Integer.valueOf(displayHeight);
+            calcHeight = round((height * 2.54),1);
+        }
+        if(heightUnit.equals("cm")){
+            calcHeight = Double.valueOf(displayHeight);
+        }
+        if(weightUnit.equals("lbs")){
+            int weight = Integer.valueOf(displayWeight);
+            calcWeight = round((weight / 2.2), 1);
+        }
+        if(weightUnit.equals("kg")){
+            calcWeight = Double.valueOf(displayWeight);
+        }
+
+
     }
 
 
