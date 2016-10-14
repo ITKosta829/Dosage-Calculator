@@ -24,7 +24,6 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
 
     View mView;
     DataHandler DH;
-    int dosePosition, frequencyPosition;
 
     Spinner doseSpinner, frequencySpinner;
     EditText ET_ID, ET_Age, ET_SCr, ET_Height, ET_Weight;
@@ -103,9 +102,7 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 getValues();
-
             }
         });
 
@@ -145,10 +142,10 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
         if (group == RG_Gender) {
             if (checkedId == R.id.Gender_Male) {
                 //what does button do
-                DH.gender = "MALE";
+                DH.gender = "Male";
             } else if (checkedId == R.id.Gender_Female) {
                 //what does button do
-                DH.gender = "FEMALE";
+                DH.gender = "Female";
             }
         } else if (group == RG_Height) {
             if (checkedId == R.id.Height_Inches) {
@@ -177,7 +174,7 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
         String h = ET_Height.getText().toString();
         String w = ET_Weight.getText().toString();
 
-        if (a.equals("") || s.equals("") || h.equals("") || w.equals("")) {
+        if (DH.gender.equals("") || a.equals("") || s.equals("") || h.equals("") || w.equals("")) {
             mToast.setText("Please enter missing values.");
             mToast.show();
         } else {

@@ -5,9 +5,11 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -25,6 +27,7 @@ public class ResultsDialog extends DialogFragment {
     DataHandler DH;
     AlertDialog resultText;
     TextView ID, Gender, Age, SCr, Height, Weight, idealWeight, CrCl, HalfLife, TTSS, ESST;
+    TextView Dose, DoseInterval;
     final private int REQUEST_CODE_ASK_PERMISSIONS = 1;
 
     @Override
@@ -42,6 +45,8 @@ public class ResultsDialog extends DialogFragment {
         Height = (TextView) v.findViewById(R.id.Results_Height);
         Weight = (TextView) v.findViewById(R.id.Results_Weight);
         idealWeight = (TextView) v.findViewById(R.id.Results_Ideal_Weight);
+        Dose = (TextView) v.findViewById(R.id.Results_Dose);
+        DoseInterval = (TextView) v.findViewById(R.id.Results_Dose_Interval);
         CrCl = (TextView) v.findViewById(R.id.Results_CrCl);
         HalfLife = (TextView) v.findViewById(R.id.Results_Half_Life);
         TTSS = (TextView) v.findViewById(R.id.Results_Time_to_Steady);
@@ -51,6 +56,9 @@ public class ResultsDialog extends DialogFragment {
         SimpleDateFormat sdf = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
         String currentTime = sdf.format(date);
 
+        int x = (int) DH.doseSelection;
+        String doseInMG = String.valueOf(x);
+
         ID.setText(DH.id);
         Gender.setText(DH.gender);
         Age.setText(String.valueOf(DH.age));
@@ -58,17 +66,27 @@ public class ResultsDialog extends DialogFragment {
         Height.setText(String.valueOf(DH.displayHeight) + " " + DH.heightUnit);
         Weight.setText(String.valueOf(DH.displayWeight) + " " + DH.weightUnit);
         idealWeight.setText(DH.displayIdealWeight + " " + DH.weightUnit);
+        Dose.setText(doseInMG);
+        DoseInterval.setText(String.valueOf(DH.frequencySelection));
         CrCl.setText(DH.displayCrCl);
         HalfLife.setText(String.valueOf(DH.halfLife));
         TTSS.setText(String.valueOf(DH.TTSS));
         ESST.setText(String.valueOf(DH.ESST));
+
+        TextView title = new TextView(DH.mActivity);
+        title.setText(currentTime);
+        title.setBackgroundColor(Color.DKGRAY);
+        title.setPadding(10, 10, 10, 10);
+        title.setGravity(Gravity.CENTER);
+        title.setTextColor(Color.WHITE);
 
 
         AlertDialog.Builder b;
         b = new AlertDialog.Builder(getActivity());
         b.setView(v)
 
-                .setTitle(currentTime)
+                //.setTitle(currentTime)
+                .setCustomTitle(title)
 
                 .setPositiveButton("Save",
                         new DialogInterface.OnClickListener() {

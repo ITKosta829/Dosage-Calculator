@@ -133,8 +133,8 @@ public class DataHandler {
             calcWeight = Double.valueOf(displayWeight);
         }
 
-        Log.d(MYTAG, "Actual Weight: "+calcWeight);
-        Log.d(MYTAG, "Actual Height: "+calcHeight);
+        //Log.d(MYTAG, "Actual Weight: "+calcWeight);
+        //Log.d(MYTAG, "Actual Height: "+calcHeight);
 
         setIdealBodyWeight();
         setDosingCreatinine();
@@ -144,11 +144,11 @@ public class DataHandler {
 
     private void setIdealBodyWeight() {
 
-        if (gender.equals("MALE")) {
+        if (gender.equals("Male")) {
             idealBodyWeight = 50 + 2.3 * ((calcHeight / 2.54) - 60);
         }
 
-        if (gender.equals("FEMALE")) {
+        if (gender.equals("Female")) {
             idealBodyWeight = 45.5 + 2.3 * ((calcHeight / 2.54) - 60);
         }
 
@@ -159,7 +159,7 @@ public class DataHandler {
             displayIdealWeight = String.valueOf(round(idealBodyWeight, 1));
         }
 
-        Log.d(MYTAG, "Ideal Weight: "+idealBodyWeight);
+        //Log.d(MYTAG, "Ideal Weight: "+idealBodyWeight);
 
         setDosingBodyWeight();
     }
@@ -170,7 +170,7 @@ public class DataHandler {
         } else {
             dosingBodyWeight = idealBodyWeight;
         }
-        Log.d(MYTAG, "Dosing Body Weight: "+dosingBodyWeight);
+        //Log.d(MYTAG, "Dosing Body Weight: "+dosingBodyWeight);
     }
 
     private void setDosingCreatinine() {
@@ -179,36 +179,36 @@ public class DataHandler {
         } else {
             dosingCreatinine = SCr;
         }
-        Log.d(MYTAG, "Dosing Creatinine: "+dosingCreatinine);
+        //Log.d(MYTAG, "Dosing Creatinine: "+dosingCreatinine);
         setCrCl_ml_min();
     }
 
     private void setCrCl_ml_min(){
-        if (gender.equals("FEMALE")) {
+        if (gender.equals("Female")) {
             CrCl_mLmin = ((140-age)*dosingBodyWeight/(72*dosingCreatinine))*0.85;
         } else {
             CrCl_mLmin = (140-age)*dosingBodyWeight/(72*dosingCreatinine);
         }
-        Log.d(MYTAG, "CrCl mL/min: "+CrCl_mLmin);
+        //Log.d(MYTAG, "CrCl mL/min: "+CrCl_mLmin);
         displayCrCl = String.valueOf(round(CrCl_mLmin,2));
         setCrCl_L_hr();
     }
 
     private void setCrCl_L_hr(){
         CrCl_Lhr = CrCl_mLmin * 0.06;
-        Log.d(MYTAG, "CrCl L/hr: "+CrCl_Lhr);
+        //Log.d(MYTAG, "CrCl L/hr: "+CrCl_Lhr);
     }
 
     private void setVd_L(){
         Vd_L = calcWeight * 0.7;
-        Log.d(MYTAG, "Vd L: "+Vd_L);
+        //Log.d(MYTAG, "Vd L: "+Vd_L);
 
         setKE();
     }
 
     private void setKE(){
         ke = CrCl_Lhr / Vd_L;
-        Log.d(MYTAG, "ke: "+ke);
+        //Log.d(MYTAG, "ke: "+ke);
 
         setHalfLife();
     }
@@ -216,7 +216,7 @@ public class DataHandler {
     private void setHalfLife(){
         halfLife = 0.693 / ke;
         halfLife = round(halfLife, 1);
-        Log.d(MYTAG, "Half Life: "+halfLife);
+        //Log.d(MYTAG, "Half Life: "+halfLife);
 
         setTimeToSteadyState();
     }
@@ -224,39 +224,31 @@ public class DataHandler {
     private void setTimeToSteadyState(){
         TTSS = 4 * halfLife;
         TTSS = round(TTSS, 2);
-        Log.d(MYTAG, "Time to Steady State: "+TTSS);
+        //Log.d(MYTAG, "Time to Steady State: "+TTSS);
 
         setInfusionTime();
         setEstimatedSteadyStateTrough();
     }
 
     private void setInfusionTime(){
-        Log.d(MYTAG, "DoseSelection: " + doseSelection);
+        //Log.d(MYTAG, "DoseSelection: " + doseSelection);
         infusionTime = doseSelection / 1000;
-        Log.d(MYTAG, "InfusionTime: " + infusionTime);
+        //Log.d(MYTAG, "InfusionTime: " + infusionTime);
     }
 
     private void setEstimatedSteadyStateTrough(){
-
         Double a, b, c, d;
-
         //ESST = (((doseSelection/infusionTime/CrCl_Lhr)*(EXP(-ke*(frequencySelection-infusionTime))*(1-EXP(-ke*infusionTime))/(1-EXP(-ke*frequencySelection)))));
-
         a = (doseSelection/infusionTime/CrCl_Lhr);
-        Log.d("ESST", "a: " + doseSelection + " / " + infusionTime + " / " + CrCl_Lhr);
-        Log.d("ESST", "a: " + a);
-
+        //Log.d("ESST", "a: " + doseSelection + " / " + infusionTime + " / " + CrCl_Lhr);
+        //Log.d("ESST", "a: " + a);
         b = (Math.exp(-ke*(frequencySelection-infusionTime)));
-        Log.d("ESST", "b: " + b);
-
+        //Log.d("ESST", "b: " + b);
         c = 1-Math.exp(-ke*infusionTime);
-        Log.d("ESST", "c: " + c);
-
+        //Log.d("ESST", "c: " + c);
         d = 1-Math.exp(-ke*frequencySelection);
-        Log.d("ESST", "d: " + d);
-
+        //Log.d("ESST", "d: " + d);
         ESST = (a * b * c) / d;
-
         ESST = round(ESST,3);
 
     }
