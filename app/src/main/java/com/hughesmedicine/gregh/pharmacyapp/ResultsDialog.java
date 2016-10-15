@@ -85,7 +85,6 @@ public class ResultsDialog extends DialogFragment {
         b = new AlertDialog.Builder(getActivity());
         b.setView(v)
 
-                //.setTitle(currentTime)
                 .setCustomTitle(title)
 
                 .setPositiveButton("Save",

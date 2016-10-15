@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_references"
+        android:title="References" />
+    <item
+        android:id="@+id/menu_limitations"
+        android:title="Limitations" />
+    <item
+        android:id="@+id/menu_liability"
+        android:title="Liability" />
+    <item
+        android:id="@+id/menu_about"
+        android:title="About Calculator" />
+    <item
+        android:id="@+id/menu_learn_more"
+        android:title="Learn More" />
+
+</menu>

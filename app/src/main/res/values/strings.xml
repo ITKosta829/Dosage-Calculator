@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Dosage Calculator</string>
+    <string name="app_name">Vancomycin Dosing Calc.</string>
+    <string name="liability_title">Liability</string>
+    <string name="limitations_title">Limitations</string>
+    <string name="about_calc">About the Calculator</string>
+    <string name="references_title">References</string>
+    <string name="more_info_title">More Pharmacotherapy Information</string>
+
 </resources>
