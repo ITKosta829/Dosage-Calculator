@@ -75,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new FragTabOne(), "Select Regimen\nEstimate Trough");
-        adapter.addFragment(new FragTabTwo(), "Adjust Regimen\nActual Trough");
+        adapter.addFragment(new FragTabOne(), "Initial Regimen");
+        adapter.addFragment(new FragTabTwo(), "Adjust Regimen");
         adapter.addFragment(new FragTabThree(), "Website");
         viewPager.setAdapter(adapter);
 

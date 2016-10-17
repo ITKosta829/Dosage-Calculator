@@ -2,8 +2,6 @@ package com.hughesmedicine.gregh.pharmacyapp;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,8 +70,8 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
         doseSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                DH.doseSelection = Double.valueOf(doseSpinner.getSelectedItem().toString());
-                Log.d(MYTAG, "Dose Selection: "+DH.doseSelection);
+                DH.originalDoseSelection = Double.valueOf(doseSpinner.getSelectedItem().toString());
+                Log.d(MYTAG, "InitialDose Selection: "+DH.originalDoseSelection);
             }
 
             @Override
@@ -88,8 +86,8 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
         frequencySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                DH.frequencySelection = Integer.valueOf(frequencySpinner.getSelectedItem().toString());
-                Log.d(MYTAG, "Dose Frequency: "+DH.frequencySelection);
+                DH.originalFrequencySelection = Integer.valueOf(frequencySpinner.getSelectedItem().toString());
+                Log.d(MYTAG, "InitialDose Frequency: "+DH.originalFrequencySelection);
             }
 
             @Override
@@ -190,7 +188,7 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
 
             DH.setCalculationValues();
 
-            ResultsDialog resultsDialog = new ResultsDialog();
+            InitialResultsDialog resultsDialog = new InitialResultsDialog();
             resultsDialog.show(DH.FM, "display");
         }
 

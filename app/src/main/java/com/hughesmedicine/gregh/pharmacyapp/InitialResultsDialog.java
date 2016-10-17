@@ -22,22 +22,23 @@ import java.util.Date;
  * Created by DeanC on 10/11/2016.
  */
 
-public class ResultsDialog extends DialogFragment {
+public class InitialResultsDialog extends DialogFragment {
 
     DataHandler DH;
     AlertDialog resultText;
     TextView ID, Gender, Age, SCr, Height, Weight, idealWeight, CrCl, HalfLife, TTSS, ESST;
-    TextView Dose, DoseInterval;
+    TextView Dose, DoseInterval, Timestamp;
     final private int REQUEST_CODE_ASK_PERMISSIONS = 1;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         LayoutInflater i = getActivity().getLayoutInflater();
-        View v = i.inflate(R.layout.results_dialog, null);
+        View v = i.inflate(R.layout.initial_results_dialog, null);
 
         DH = DataHandler.getInstance();
 
+        Timestamp = (TextView) v.findViewById(R.id.Timestamp);
         ID = (TextView) v.findViewById(R.id.Results_ID);
         Gender = (TextView) v.findViewById(R.id.Results_Gender);
         Age = (TextView) v.findViewById(R.id.Results_Age);
@@ -56,9 +57,10 @@ public class ResultsDialog extends DialogFragment {
         SimpleDateFormat sdf = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
         String currentTime = sdf.format(date);
 
-        int x = (int) DH.doseSelection;
+        int x = (int) DH.originalDoseSelection;
         String doseInMG = String.valueOf(x);
 
+        Timestamp.setText(currentTime);
         ID.setText(DH.id);
         Gender.setText(DH.gender);
         Age.setText(String.valueOf(DH.age));
@@ -67,14 +69,14 @@ public class ResultsDialog extends DialogFragment {
         Weight.setText(String.valueOf(DH.displayWeight) + " " + DH.weightUnit);
         idealWeight.setText(DH.displayIdealWeight + " " + DH.weightUnit);
         Dose.setText(doseInMG);
-        DoseInterval.setText(String.valueOf(DH.frequencySelection));
+        DoseInterval.setText(String.valueOf(DH.originalFrequencySelection));
         CrCl.setText(DH.displayCrCl);
         HalfLife.setText(String.valueOf(DH.halfLife));
         TTSS.setText(String.valueOf(DH.TTSS));
         ESST.setText(String.valueOf(DH.ESST));
 
         TextView title = new TextView(DH.mActivity);
-        title.setText(currentTime);
+        title.setText("Initial Trough Calculation Results");
         title.setBackgroundColor(Color.DKGRAY);
         title.setPadding(10, 10, 10, 10);
         title.setGravity(Gravity.CENTER);

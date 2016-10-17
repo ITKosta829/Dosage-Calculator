@@ -6,14 +6,31 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.Toast;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 
 /**
  * Created by DeanC on 10/14/2016.
  */
 
-public class FragTabTwo extends Fragment {
+public class FragTabTwo extends Fragment implements OnCheckedChangeListener{
 
     View mView;
+    DataHandler DH;
+
+    Spinner originalDoseSpinner, newDoseSpinner, originalFrequencySpinner, newFrequencySpinner;
+    EditText ET_ID, ET_Age, ET_SCr, ET_Height, ET_Weight, ET_Actual_ESST;
+    SegmentedRadioGroup RG_Gender, RG_Height, RG_Weight;
+
+    Toast mToast;
+
+    final String MYTAG = "SEE ALL VALUES";
 
     public FragTabTwo() {
     }
@@ -23,6 +40,120 @@ public class FragTabTwo extends Fragment {
                              Bundle savedInstanceState) {
 
         mView = inflater.inflate(R.layout.frag_tab_two, container, false);
+
+        DH = DataHandler.getInstance();
+
+        mToast = Toast.makeText(DH.mActivity, "", Toast.LENGTH_SHORT);
+
+        ET_ID = (EditText) mView.findViewById(R.id.ID_Entry);
+        ET_Age = (EditText) mView.findViewById(R.id.Age_Entry);
+        ET_SCr = (EditText) mView.findViewById(R.id.SCr_Entry);
+        ET_SCr.addTextChangedListener(new DecimalFilter(ET_SCr, DH.mActivity));
+        ET_Height = (EditText) mView.findViewById(R.id.Height_Entry);
+        ET_Weight = (EditText) mView.findViewById(R.id.Weight_Entry);
+        ET_Actual_ESST = (EditText) mView.findViewById(R.id.Actual_ESST_Entry);
+
+        RG_Gender = (SegmentedRadioGroup) mView.findViewById(R.id.Gender_Segment);
+        RG_Gender.setOnCheckedChangeListener(this);
+        RG_Height = (SegmentedRadioGroup) mView.findViewById(R.id.Height_Segment);
+        RG_Height.setOnCheckedChangeListener(this);
+        RG_Weight = (SegmentedRadioGroup) mView.findViewById(R.id.Weight_Segment);
+        RG_Weight.setOnCheckedChangeListener(this);
+
+        originalDoseSpinner = (Spinner) mView.findViewById(R.id.Original_Dose_Spinner);
+        originalFrequencySpinner = (Spinner) mView.findViewById(R.id.Original_Frequency_Spinner);
+        newDoseSpinner = (Spinner) mView.findViewById(R.id.New_Dose_Spinner);
+        newFrequencySpinner = (Spinner) mView.findViewById(R.id.New_Frequency_Spinner);
+
+        ArrayAdapter<String> originalDoseAdapter = new ArrayAdapter<>(DH.mContext, R.layout.spinner_textview, DH.getDose());
+        ArrayAdapter<String> originalFrequencyAdapter = new ArrayAdapter<>(DH.mContext, R.layout.spinner_textview, DH.getFrequency());
+        ArrayAdapter<String> newDoseAdapter = new ArrayAdapter<>(DH.mContext, R.layout.spinner_textview, DH.getDose());
+        ArrayAdapter<String> newFrequencyAdapter = new ArrayAdapter<>(DH.mContext, R.layout.spinner_textview, DH.getFrequency());
+
+        originalDoseAdapter.setDropDownViewResource(R.layout.spinner_textview);
+        originalDoseSpinner.setAdapter(originalDoseAdapter);
+        originalDoseSpinner.setSelection(2);
+        originalDoseSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                DH.originalDoseSelection = Double.valueOf(originalDoseSpinner.getSelectedItem().toString());
+                Log.d(MYTAG, "InitialDose Selection: "+DH.originalDoseSelection);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        originalFrequencyAdapter.setDropDownViewResource(R.layout.spinner_textview);
+        originalFrequencySpinner.setAdapter(originalFrequencyAdapter);
+        originalFrequencySpinner.setSelection(2);
+        originalFrequencySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                DH.originalFrequencySelection = Integer.valueOf(originalFrequencySpinner.getSelectedItem().toString());
+                Log.d(MYTAG, "InitialDose Frequency: "+DH.originalFrequencySelection);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        newDoseAdapter.setDropDownViewResource(R.layout.spinner_textview);
+        newDoseSpinner.setAdapter(originalDoseAdapter);
+        newDoseSpinner.setSelection(2);
+        newDoseSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                DH.newDoseSelection = Double.valueOf(newDoseSpinner.getSelectedItem().toString());
+                Log.d(MYTAG, "New InitialDose Selection: "+DH.newDoseSelection);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        newFrequencyAdapter.setDropDownViewResource(R.layout.spinner_textview);
+        newFrequencySpinner.setAdapter(originalFrequencyAdapter);
+        newFrequencySpinner.setSelection(2);
+        newFrequencySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                DH.newFrequencySelection = Integer.valueOf(newFrequencySpinner.getSelectedItem().toString());
+                Log.d(MYTAG, "New InitialDose Frequency: "+DH.newFrequencySelection);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        Button calculate = (Button) mView.findViewById(R.id.Calculate);
+        calculate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getValues();
+            }
+        });
+
+        Button clear = (Button) mView.findViewById(R.id.Clear);
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ET_ID.setText("");
+                ET_Age.setText("");
+                ET_SCr.setText("");
+                ET_Height.setText("");
+                ET_Weight.setText("");
+                ET_Actual_ESST.setText("");
+            }
+        });
 
 
         return mView;
@@ -48,6 +179,67 @@ public class FragTabTwo extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
+    }
+
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        if (group == RG_Gender) {
+            if (checkedId == R.id.Gender_Male) {
+                //what does button do
+                DH.gender = "Male";
+            } else if (checkedId == R.id.Gender_Female) {
+                //what does button do
+                DH.gender = "Female";
+            }
+        } else if (group == RG_Height) {
+            if (checkedId == R.id.Height_Inches) {
+                //what does button do
+                DH.heightUnit = "inches";
+            } else if (checkedId == R.id.Height_CM) {
+                //what does button do
+                DH.heightUnit = "cm";
+            }
+        } else if (group == RG_Weight) {
+            if (checkedId == R.id.Weight_LBS) {
+                //what does button do
+                DH.weightUnit = "lbs";
+            } else if (checkedId == R.id.Weight_KG) {
+                //what does button do
+                DH.weightUnit = "kg";
+            }
+        }
+    }
+
+    public void getValues() {
+
+        String id = ET_ID.getText().toString();
+        String a = ET_Age.getText().toString();
+        String s = ET_SCr.getText().toString();
+        String h = ET_Height.getText().toString();
+        String w = ET_Weight.getText().toString();
+        String e = ET_Actual_ESST.getText().toString();
+
+        if (DH.gender.equals("") || a.equals("") || s.equals("") || h.equals("") || w.equals("") || e.equals("")) {
+            mToast.setText("Please enter missing values.");
+            mToast.show();
+        } else {
+            if (id.equals("")) {
+                DH.id = "Not Provided";
+            } else {
+                DH.id = ET_ID.getText().toString();
+            }
+            DH.age = Integer.valueOf(a);
+            DH.SCr = Double.valueOf(s);
+            DH.displayHeight = h;
+            DH.displayWeight = w;
+            DH.actualLabESST = Double.valueOf(e);
+
+            DH.setCalculationValues();
+
+            AdjustResultsDialog resultsDialog = new AdjustResultsDialog();
+            resultsDialog.show(DH.FM, "display");
+        }
+
+
     }
 
 
