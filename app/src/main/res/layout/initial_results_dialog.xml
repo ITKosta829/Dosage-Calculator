@@ -9,8 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
 
         <TextView
             android:id="@+id/Timestamp"
@@ -38,9 +38,9 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:paddingStart="5dp"
-            android:text="Patient ID:"
+            android:text="Patient Identifier:"
             android:textStyle="bold" />
 
         <TextView
@@ -381,7 +381,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:paddingStart="5dp"
-            android:text="Time to Steady State:"
+            android:text="Steady State Reached After:"
             android:textStyle="bold" />
 
         <TextView
@@ -411,6 +411,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
+            android:background="#ffff00"
             android:paddingStart="5dp"
             android:text="Est. Steady State Trough (mg/dL):"
             android:textStyle="bold" />
@@ -420,9 +421,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#ffff00"
             android:gravity="end"
-            android:paddingEnd="5dp"
-            android:textColor="#b01c2e" />
+            android:paddingEnd="5dp" />
 
     </LinearLayout>
 

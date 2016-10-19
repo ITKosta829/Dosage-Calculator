@@ -47,7 +47,7 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
         ET_ID = (EditText) mView.findViewById(R.id.ID_Entry);
         ET_Age = (EditText) mView.findViewById(R.id.Age_Entry);
         ET_SCr = (EditText) mView.findViewById(R.id.SCr_Entry);
-        ET_SCr.addTextChangedListener(new DecimalFilter(ET_SCr, DH.mActivity));
+        //ET_SCr.addTextChangedListener(new DecimalFilter(ET_SCr, DH.mActivity));
         ET_Height = (EditText) mView.findViewById(R.id.Height_Entry);
         ET_Weight = (EditText) mView.findViewById(R.id.Weight_Entry);
 
@@ -172,7 +172,7 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
         String h = ET_Height.getText().toString();
         String w = ET_Weight.getText().toString();
 
-        if (DH.gender.equals("") || a.equals("") || s.equals("") || h.equals("") || w.equals("")) {
+        if (DH.gender == null || a.equals("") || s.equals("") || h.equals("") || w.equals("")) {
             mToast.setText("Please enter missing values.");
             mToast.show();
         } else {

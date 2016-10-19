@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:minHeight="300dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -38,9 +37,9 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:paddingStart="5dp"
-            android:text="Patient ID:"
+            android:text="Patient Identifier:"
             android:textStyle="bold" />
 
         <TextView
@@ -48,161 +47,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:gravity="end"
-            android:paddingEnd="5dp" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="2dp"
-        android:background="#000000"
-        android:paddingEnd="5dp"
-        android:paddingStart="5dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingStart="5dp"
-            android:text="Gender:"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/Results_Gender"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:paddingEnd="5dp" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="2dp"
-        android:background="#000000"
-        android:paddingEnd="5dp"
-        android:paddingStart="5dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingStart="5dp"
-            android:text="Age:"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/Results_Age"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:paddingEnd="5dp" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="2dp"
-        android:background="#000000"
-        android:paddingEnd="5dp"
-        android:paddingStart="5dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingStart="5dp"
-            android:text="Height:"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/Results_Height"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:paddingEnd="5dp" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="2dp"
-        android:background="#000000"
-        android:paddingEnd="5dp"
-        android:paddingStart="5dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingStart="5dp"
-            android:text="Weight:"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/Results_Weight"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:paddingEnd="5dp" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="2dp"
-        android:background="#000000"
-        android:paddingEnd="5dp"
-        android:paddingStart="5dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingStart="5dp"
-            android:text="Ideal Weight:"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/Results_Ideal_Weight"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="end"
             android:paddingEnd="5dp" />
 
@@ -286,163 +130,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:paddingStart="5dp"
-            android:text="SCr (mg/dL):"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/Results_SCr"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:paddingEnd="5dp" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="2dp"
-        android:background="#000000"
-        android:paddingEnd="5dp"
-        android:paddingStart="5dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:paddingStart="5dp"
-            android:text="CrCl (mL/min):"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/Results_CrCl"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:paddingEnd="5dp" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="2dp"
-        android:background="#000000"
-        android:paddingEnd="5dp"
-        android:paddingStart="5dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:paddingStart="5dp"
-            android:text="Half-Life (t1/2 hr):"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/Results_Half_Life"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:paddingEnd="5dp" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="2dp"
-        android:background="#000000"
-        android:paddingEnd="5dp"
-        android:paddingStart="5dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:paddingStart="5dp"
-            android:text="Time to Steady State:"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/Results_Time_to_Steady"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:paddingEnd="5dp" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="2dp"
-        android:background="#000000"
-        android:paddingEnd="5dp"
-        android:paddingStart="5dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:paddingStart="5dp"
-            android:text="Est. Steady State Trough (mg/dL):"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/Results_Estimated_Steady_State"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:paddingEnd="5dp"
-            android:textColor="#b01c2e" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_marginTop="2dp"
-        android:background="#000000"
-        android:paddingEnd="5dp"
-        android:paddingStart="5dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="4"
             android:paddingStart="5dp"
             android:text="Actual Steady State Trough (mg/dL):"
             android:textStyle="bold" />
@@ -535,7 +223,8 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_weight="5"
+            android:background="#ffff00"
             android:paddingStart="5dp"
             android:text="NEW Est. Steady State Trough (mg/dL):"
             android:textStyle="bold" />
@@ -545,9 +234,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#ffff00"
             android:gravity="end"
-            android:paddingEnd="5dp"
-            android:textColor="#b01c2e" />
+            android:paddingEnd="5dp" />
 
     </LinearLayout>
 

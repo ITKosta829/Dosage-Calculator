@@ -26,8 +26,7 @@ public class AdjustResultsDialog extends DialogFragment {
 
     DataHandler DH;
     AlertDialog resultText;
-    TextView ID, Gender, Age, SCr, Height, Weight, idealWeight, CrCl, HalfLife, TTSS, InitialESST;
-    TextView InitialDose, InitialDoseInterval, Timestamp, ASST, NewDose, NewDoseInterval, NewESST;
+    TextView ID, InitialDose, InitialDoseInterval, Timestamp, ASST, NewDose, NewDoseInterval, NewESST;
     final private int REQUEST_CODE_ASK_PERMISSIONS = 1;
 
     @Override
@@ -40,18 +39,8 @@ public class AdjustResultsDialog extends DialogFragment {
 
         Timestamp = (TextView) v.findViewById(R.id.Timestamp);
         ID = (TextView) v.findViewById(R.id.Results_ID);
-        Gender = (TextView) v.findViewById(R.id.Results_Gender);
-        Age = (TextView) v.findViewById(R.id.Results_Age);
-        SCr = (TextView) v.findViewById(R.id.Results_SCr);
-        Height = (TextView) v.findViewById(R.id.Results_Height);
-        Weight = (TextView) v.findViewById(R.id.Results_Weight);
-        idealWeight = (TextView) v.findViewById(R.id.Results_Ideal_Weight);
         InitialDose = (TextView) v.findViewById(R.id.Results_Initial_Dose);
         InitialDoseInterval = (TextView) v.findViewById(R.id.Results_Initial_Dose_Interval);
-        CrCl = (TextView) v.findViewById(R.id.Results_CrCl);
-        HalfLife = (TextView) v.findViewById(R.id.Results_Half_Life);
-        TTSS = (TextView) v.findViewById(R.id.Results_Time_to_Steady);
-        InitialESST = (TextView) v.findViewById(R.id.Results_Estimated_Steady_State);
         ASST = (TextView) v.findViewById(R.id.Results_Actual_Steady_State);
         NewDose = (TextView) v.findViewById(R.id.Results_Adjust_Dose);
         NewDoseInterval = (TextView) v.findViewById(R.id.Results_Adjust_Dose_Interval);
@@ -68,18 +57,8 @@ public class AdjustResultsDialog extends DialogFragment {
 
         Timestamp.setText(currentTime);
         ID.setText(DH.id);
-        Gender.setText(DH.gender);
-        Age.setText(String.valueOf(DH.age));
-        SCr.setText(String.valueOf(DH.SCr));
-        Height.setText(String.valueOf(DH.displayHeight) + " " + DH.heightUnit);
-        Weight.setText(String.valueOf(DH.displayWeight) + " " + DH.weightUnit);
-        idealWeight.setText(DH.displayIdealWeight + " " + DH.weightUnit);
         InitialDose.setText(originalDoseInMG);
         InitialDoseInterval.setText(String.valueOf(DH.originalFrequencySelection));
-        CrCl.setText(DH.displayCrCl);
-        HalfLife.setText(String.valueOf(DH.halfLife));
-        TTSS.setText(String.valueOf(DH.TTSS));
-        InitialESST.setText(String.valueOf(DH.ESST));
         NewDose.setText(newDoseInMG);
         NewDoseInterval.setText(String.valueOf(DH.newFrequencySelection));
         NewESST.setText(String.valueOf(DH.newESST));

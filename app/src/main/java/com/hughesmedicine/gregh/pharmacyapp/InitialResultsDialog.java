@@ -72,7 +72,7 @@ public class InitialResultsDialog extends DialogFragment {
         DoseInterval.setText(String.valueOf(DH.originalFrequencySelection));
         CrCl.setText(DH.displayCrCl);
         HalfLife.setText(String.valueOf(DH.halfLife));
-        TTSS.setText(String.valueOf(DH.TTSS));
+        TTSS.setText(String.valueOf(DH.TTSS) + " hrs");
         ESST.setText(String.valueOf(DH.ESST));
 
         TextView title = new TextView(DH.mActivity);

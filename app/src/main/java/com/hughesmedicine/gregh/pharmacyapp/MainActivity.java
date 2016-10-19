@@ -75,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new FragTabOne(), "Initial Regimen");
-        adapter.addFragment(new FragTabTwo(), "Adjust Regimen");
-        adapter.addFragment(new FragTabThree(), "Website");
+        adapter.addFragment(new FragTabHome(), "Home");
+        adapter.addFragment(new FragTabOne(), "Initial\nRegimen");
+        adapter.addFragment(new FragTabTwo(), "Adjust\nRegimen");
         viewPager.setAdapter(adapter);
 
     }
@@ -174,7 +174,8 @@ public class MainActivity extends AppCompatActivity {
                         .setTitle(R.string.about_calc)
                         .setMessage(bullet + " Actual body weight is used for Vd unless patients are underweight\n\n" +
                                 bullet + " Ideal body weight is used for Cl\n\n" +
-                                bullet + " SCr is rounded up to 1mg/dL if ≥65 years old\n\n" +
+                                bullet + " Infusion rate is defaulted to 1g/hour which may vary by institution\n\n" +
+                                bullet + " SCr is rounded up to 1mg/dL if ≥65 years old due to presumed decrease in muscle mass\n\n" +
                                 bullet + " Intermittent short infusion steady state equation is used for both calculations")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
@@ -187,8 +188,7 @@ public class MainActivity extends AppCompatActivity {
                 new AlertDialog.Builder(this)
                         .setTitle(R.string.more_info_title)
                         .setMessage("For information about other pharmacotherapy topics related to " +
-                                "Internal Medicine, please visit HughesMedicine.com. or " +
-                                "check out the " + "\"" + "Website" + "\"" + " tab")
+                                "Internal Medicine, please visit HughesMedicine.com")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // continue with delete

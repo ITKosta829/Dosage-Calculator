@@ -25,8 +25,8 @@ public class FragTabTwo extends Fragment implements OnCheckedChangeListener{
     DataHandler DH;
 
     Spinner originalDoseSpinner, newDoseSpinner, originalFrequencySpinner, newFrequencySpinner;
-    EditText ET_ID, ET_Age, ET_SCr, ET_Height, ET_Weight, ET_Actual_ESST;
-    SegmentedRadioGroup RG_Gender, RG_Height, RG_Weight;
+    EditText ET_ID, ET_Weight, ET_Actual_ESST;
+    SegmentedRadioGroup RG_Weight;
 
     Toast mToast;
 
@@ -46,17 +46,9 @@ public class FragTabTwo extends Fragment implements OnCheckedChangeListener{
         mToast = Toast.makeText(DH.mActivity, "", Toast.LENGTH_SHORT);
 
         ET_ID = (EditText) mView.findViewById(R.id.ID_Entry);
-        ET_Age = (EditText) mView.findViewById(R.id.Age_Entry);
-        ET_SCr = (EditText) mView.findViewById(R.id.SCr_Entry);
-        ET_SCr.addTextChangedListener(new DecimalFilter(ET_SCr, DH.mActivity));
-        ET_Height = (EditText) mView.findViewById(R.id.Height_Entry);
         ET_Weight = (EditText) mView.findViewById(R.id.Weight_Entry);
         ET_Actual_ESST = (EditText) mView.findViewById(R.id.Actual_ESST_Entry);
 
-        RG_Gender = (SegmentedRadioGroup) mView.findViewById(R.id.Gender_Segment);
-        RG_Gender.setOnCheckedChangeListener(this);
-        RG_Height = (SegmentedRadioGroup) mView.findViewById(R.id.Height_Segment);
-        RG_Height.setOnCheckedChangeListener(this);
         RG_Weight = (SegmentedRadioGroup) mView.findViewById(R.id.Weight_Segment);
         RG_Weight.setOnCheckedChangeListener(this);
 
@@ -147,9 +139,6 @@ public class FragTabTwo extends Fragment implements OnCheckedChangeListener{
             @Override
             public void onClick(View view) {
                 ET_ID.setText("");
-                ET_Age.setText("");
-                ET_SCr.setText("");
-                ET_Height.setText("");
                 ET_Weight.setText("");
                 ET_Actual_ESST.setText("");
             }
@@ -182,23 +171,7 @@ public class FragTabTwo extends Fragment implements OnCheckedChangeListener{
     }
 
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        if (group == RG_Gender) {
-            if (checkedId == R.id.Gender_Male) {
-                //what does button do
-                DH.gender = "Male";
-            } else if (checkedId == R.id.Gender_Female) {
-                //what does button do
-                DH.gender = "Female";
-            }
-        } else if (group == RG_Height) {
-            if (checkedId == R.id.Height_Inches) {
-                //what does button do
-                DH.heightUnit = "inches";
-            } else if (checkedId == R.id.Height_CM) {
-                //what does button do
-                DH.heightUnit = "cm";
-            }
-        } else if (group == RG_Weight) {
+        if (group == RG_Weight) {
             if (checkedId == R.id.Weight_LBS) {
                 //what does button do
                 DH.weightUnit = "lbs";
@@ -212,13 +185,13 @@ public class FragTabTwo extends Fragment implements OnCheckedChangeListener{
     public void getValues() {
 
         String id = ET_ID.getText().toString();
-        String a = ET_Age.getText().toString();
-        String s = ET_SCr.getText().toString();
-        String h = ET_Height.getText().toString();
         String w = ET_Weight.getText().toString();
         String e = ET_Actual_ESST.getText().toString();
 
-        if (DH.gender.equals("") || a.equals("") || s.equals("") || h.equals("") || w.equals("") || e.equals("")) {
+        Log.d(MYTAG, "Weight: " + w + " Unit:" + DH.weightUnit);
+        Log.d(MYTAG, "Actual ESST: " + e);
+
+        if (DH.weightUnit == null || w.equals("") || e.equals("")) {
             mToast.setText("Please enter missing values.");
             mToast.show();
         } else {
@@ -227,13 +200,11 @@ public class FragTabTwo extends Fragment implements OnCheckedChangeListener{
             } else {
                 DH.id = ET_ID.getText().toString();
             }
-            DH.age = Integer.valueOf(a);
-            DH.SCr = Double.valueOf(s);
-            DH.displayHeight = h;
+
             DH.displayWeight = w;
             DH.actualLabESST = Double.valueOf(e);
 
-            DH.setCalculationValues();
+            DH.startFragTabTwoCalculations();
 
             AdjustResultsDialog resultsDialog = new AdjustResultsDialog();
             resultsDialog.show(DH.FM, "display");

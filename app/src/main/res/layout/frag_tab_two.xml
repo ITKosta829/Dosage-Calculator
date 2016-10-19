@@ -14,144 +14,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:paddingStart="10dp"
-            android:text="Patient Name"
+            android:text="Actual Lab-Drawn Steady State Trough"
             android:textColor="#000000"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/ID_Entry"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:gravity="center_horizontal"
-            android:hint="Optional"
-            android:inputType="textPersonName"
-            android:paddingEnd="10dp"
-            android:paddingStart="5dp" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="2dp"
-        android:background="#000000" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:paddingStart="10dp"
-            android:text="Gender"
-            android:textColor="#000000"
-            android:textStyle="bold" />
-
-        <com.hughesmedicine.gregh.pharmacyapp.SegmentedRadioGroup
-            android:id="@+id/Gender_Segment"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_weight="1"
-            android:checkedButton="@+id/button_one"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/Gender_Male"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:button="@null"
-                android:gravity="center"
-                android:minHeight="33dip"
-                android:minWidth="40dip"
-                android:text="Male"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/radio_colors" />
-
-            <RadioButton
-                android:id="@+id/Gender_Female"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:button="@null"
-                android:gravity="center"
-                android:minHeight="33dip"
-                android:minWidth="40dip"
-                android:text="Female"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/radio_colors" />
-
-        </com.hughesmedicine.gregh.pharmacyapp.SegmentedRadioGroup>
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="2dp"
-        android:background="#000000" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:paddingStart="10dp"
-            android:text="Age"
-            android:textColor="#000000"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/Age_Entry"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:inputType="number"
-            android:paddingEnd="10dp"
-            android:paddingStart="5dp" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="2dp"
-        android:background="#000000" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:paddingStart="10dp"
-            android:text="SCr"
-            android:textColor="#000000"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/SCr_Entry"
+            android:id="@+id/Actual_ESST_Entry"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -159,91 +29,11 @@
             android:inputType="numberDecimal"
             android:paddingStart="5dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:paddingEnd="10dp"
-            android:paddingStart="5dp"
-            android:text="mg/dL"
-            android:textColor="#000000"
-            android:textStyle="bold" />
-
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="2dp"
-        android:background="#000000" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:paddingStart="10dp"
-            android:text="Height"
-            android:textColor="#000000"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/Height_Entry"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:inputType="number"
-            android:paddingStart="5dp" />
-
-        <com.hughesmedicine.gregh.pharmacyapp.SegmentedRadioGroup
-            android:id="@+id/Height_Segment"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_weight="1"
-            android:checkedButton="@+id/button_one"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/Height_Inches"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:button="@null"
-                android:gravity="center"
-                android:minHeight="33dip"
-                android:minWidth="40dip"
-                android:text="inches"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/radio_colors" />
-
-            <RadioButton
-                android:id="@+id/Height_CM"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:button="@null"
-                android:gravity="center"
-                android:minHeight="33dip"
-                android:minWidth="40dip"
-                android:text="cm"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/radio_colors" />
-
-        </com.hughesmedicine.gregh.pharmacyapp.SegmentedRadioGroup>
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_marginTop="2dp"
         android:background="#000000" />
 
@@ -313,7 +103,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_marginTop="2dp"
         android:background="#000000" />
 
@@ -367,50 +157,6 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="2"
             android:paddingStart="10dp"
-            android:text="New Proposed Dose"
-            android:textColor="#000000"
-            android:textStyle="bold" />
-
-        <Spinner
-            android:id="@+id/New_Dose_Spinner"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="2dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:paddingStart="5dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:paddingEnd="10dp"
-            android:paddingStart="5dp"
-            android:text="mg"
-            android:textColor="#000000"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="2dp"
-        android:background="#000000" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="2"
-            android:paddingStart="10dp"
             android:text="Original Dose Interval"
             android:textColor="#000000"
             android:textStyle="bold" />
@@ -441,6 +187,50 @@
             android:paddingEnd="10dp"
             android:paddingStart="5dp"
             android:text="hr"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:background="#000000" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            android:paddingStart="10dp"
+            android:text="New Proposed Dose"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/New_Dose_Spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingStart="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingEnd="10dp"
+            android:paddingStart="5dp"
+            android:text="mg"
             android:textColor="#000000"
             android:textStyle="bold" />
 
@@ -495,7 +285,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_marginTop="2dp"
         android:background="#000000" />
 
@@ -509,26 +299,28 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="3"
+            android:layout_weight="2"
             android:paddingStart="10dp"
-            android:text="Actual Lab-Drawn Steady State Trough"
+            android:text="Patient Name"
             android:textColor="#000000"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/Actual_ESST_Entry"
+            android:id="@+id/ID_Entry"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="4"
             android:gravity="center_horizontal"
-            android:inputType="numberDecimal"
+            android:hint="Optional"
+            android:inputType="textPersonName"
+            android:paddingEnd="10dp"
             android:paddingStart="5dp" />
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_marginTop="2dp"
         android:background="#000000" />
 

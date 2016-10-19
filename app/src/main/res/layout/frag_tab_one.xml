@@ -5,47 +5,10 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/ID_Fields"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/ID_Text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="2"
-            android:paddingStart="10dp"
-            android:text="Patient Name"
-            android:textColor="#000000"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/ID_Entry"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:gravity="center_horizontal"
-            android:hint="Optional"
-            android:inputType="textPersonName"
-            android:paddingEnd="10dp"
-            android:paddingStart="5dp" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="3dp"
-        android:background="#000000" />
-
-    <LinearLayout
         android:id="@+id/Gender_Fields"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="2dp"
         android:orientation="horizontal">
 
         <TextView
@@ -60,55 +23,55 @@
             android:textStyle="bold" />
 
         <com.hughesmedicine.gregh.pharmacyapp.SegmentedRadioGroup
-        android:id="@+id/Gender_Segment"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dip"
-        android:layout_weight="1"
-        android:checkedButton="@+id/button_one"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/Gender_Male"
+            android:id="@+id/Gender_Segment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="5dip"
             android:layout_weight="1"
-            android:button="@null"
-            android:gravity="center"
-            android:minHeight="33dip"
-            android:minWidth="40dip"
-            android:text="Male"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/radio_colors" />
+            android:checkedButton="@+id/button_one"
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/Gender_Female"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:gravity="center"
-            android:minHeight="33dip"
-            android:minWidth="40dip"
-            android:text="Female"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/radio_colors" />
+            <RadioButton
+                android:id="@+id/Gender_Male"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:minHeight="33dip"
+                android:minWidth="40dip"
+                android:text="Male"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/radio_colors" />
 
-    </com.hughesmedicine.gregh.pharmacyapp.SegmentedRadioGroup>
+            <RadioButton
+                android:id="@+id/Gender_Female"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:minHeight="33dip"
+                android:minWidth="40dip"
+                android:text="Female"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/radio_colors" />
+
+        </com.hughesmedicine.gregh.pharmacyapp.SegmentedRadioGroup>
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="3dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
         android:background="#000000" />
 
     <LinearLayout
         android:id="@+id/Age_Fields"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="2dp"
         android:orientation="horizontal">
 
         <TextView
@@ -136,15 +99,15 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="3dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
         android:background="#000000" />
 
     <LinearLayout
         android:id="@+id/SCr_Fields"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="2dp"
         android:orientation="horizontal">
 
         <TextView
@@ -182,15 +145,15 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="3dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
         android:background="#000000" />
 
     <LinearLayout
         android:id="@+id/Height_Fields"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="2dp"
         android:orientation="horizontal">
 
         <TextView
@@ -254,15 +217,15 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="3dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
         android:background="#000000" />
 
     <LinearLayout
         android:id="@+id/Weight_Fields"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="2dp"
         android:orientation="horizontal">
 
         <TextView
@@ -326,15 +289,15 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="3dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
         android:background="#000000" />
 
     <LinearLayout
         android:id="@+id/Dose_Fields"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="2dp"
         android:orientation="horizontal">
 
         <TextView
@@ -353,7 +316,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:gravity="center"
             android:paddingStart="5dp" />
@@ -383,15 +346,15 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="3dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
         android:background="#000000" />
 
     <LinearLayout
         android:id="@+id/Frequency_Fields"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="2dp"
         android:orientation="horizontal">
 
         <TextView
@@ -420,7 +383,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:gravity="center"
             android:paddingStart="5dp" />
@@ -450,8 +413,45 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="3dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:background="#000000" />
+
+    <LinearLayout
+        android:id="@+id/ID_Fields"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ID_Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            android:paddingStart="10dp"
+            android:text="Patient Identifier"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/ID_Entry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:gravity="center_horizontal"
+            android:hint="Optional"
+            android:inputType="textPersonName"
+            android:paddingEnd="10dp"
+            android:paddingStart="5dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
         android:background="#000000" />
 
     <LinearLayout
@@ -485,8 +485,17 @@
             android:text="Clear"
             android:textColor="#ffffff" />
 
-
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:gravity="center_horizontal"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:text="*If you also have a steady state level drawn, swipe right to the next calculator to estimate an adjustment regimen."
+        android:textSize="12sp" />
 
 
 </LinearLayout>
