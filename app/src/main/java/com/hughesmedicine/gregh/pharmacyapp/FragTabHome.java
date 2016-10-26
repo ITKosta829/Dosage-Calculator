@@ -34,7 +34,7 @@ public class FragTabHome extends Fragment{
 
         TextView text = (TextView)mView.findViewById(R.id.text);
 
-        text.setText(square + " Use this tool to determine a vancomycin regimen, estimate a trough, " +
+        text.setText(square + " Use this tool to determine a Vancomycin regimen, estimate a trough, " +
                 "or adjust a regimen once a trough is obtained.\n\n" +
                 square + " Optimal drug monitoring:\n\n" +
                 square + " The trough should be obtained prior to the next dose once steady " +
@@ -46,7 +46,8 @@ public class FragTabHome extends Fragment{
                 square + " Swipe to the middle tab if just starting a regimen and a trough is not yet obtained\n" +
                 square + " Swipe to the right tab if the patient is already receiving vancomycin, " +
                 "has a steady state trough from the lab, and you wish to adjust the regimen\n" +
-                square + " Use the menu in the upper right for more information about this tool");
+                square + " Use the menu in the upper right for more information about this tool\n\n" +
+                square + " Any saved images are stored in your Downloads Folder");
 
         return mView;
     }

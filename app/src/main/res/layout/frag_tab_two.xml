@@ -198,6 +198,43 @@
         android:layout_marginTop="2dp"
         android:background="#000000" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingStart="10dp"
+        android:layout_marginTop="5dp"
+        android:paddingEnd="10dp"
+        android:text="Propose an adjusted regimen&#10;and click 'Calculate' to view trough:"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingEnd="10dp"
+        android:layout_marginTop="2dp"
+        android:paddingStart="10dp"
+        android:text="*Minimum trough >10mg/L to avoid resistance"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingEnd="10dp"
+        android:layout_marginTop="2dp"
+        android:paddingStart="10dp"
+        android:text="**Trough goal 15-20mg/L in complicated infections&#10;(ie. bacteremia, endocarditis, osteomyelitis, meningitis, hospital-acquired pneumonia)"
+        android:textSize="12sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="#000000" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

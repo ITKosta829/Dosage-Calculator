@@ -109,7 +109,7 @@ public class AdjustResultsDialog extends DialogFragment {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     if (android.os.Build.VERSION.SDK_INT >= 23) {
-                                        requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                                        DH.mActivity.requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                                                 REQUEST_CODE_ASK_PERMISSIONS);
                                     }
                                 }

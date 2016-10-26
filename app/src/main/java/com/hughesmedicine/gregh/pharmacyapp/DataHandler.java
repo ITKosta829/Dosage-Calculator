@@ -10,6 +10,7 @@ import android.os.Environment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -83,7 +84,8 @@ public class DataHandler {
 
         try {
             // image naming and path  to include sd card  appending name you choose for file
-            String mPath = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg";
+            String mPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString()
+                    + "/" + now + ".jpg";
 
             // create bitmap screen capture
             View v1 = dialog.getWindow().getDecorView().getRootView();
@@ -100,7 +102,7 @@ public class DataHandler {
             outputStream.flush();
             outputStream.close();
 
-            //Toast.makeText(mActivity, "Screenshot Saved.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mActivity, "Screenshot Saved.", Toast.LENGTH_SHORT).show();
             openScreenshot(imageFile);
 
         } catch (Throwable e) {

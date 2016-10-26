@@ -188,7 +188,10 @@ public class MainActivity extends AppCompatActivity {
                 new AlertDialog.Builder(this)
                         .setTitle(R.string.more_info_title)
                         .setMessage("For information about other pharmacotherapy topics related to " +
-                                "Internal Medicine, please visit HughesMedicine.com")
+                                "Internal Medicine, please visit HughesMedicine.com\n\n" +
+                                "App Coded and Designed by:\n" +
+                                "Dean Siroky\n" +
+                                "dsirokydroidapps@gmail.com")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // continue with delete
