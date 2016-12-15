@@ -1,6 +1,7 @@
 package com.hughesmedicine.gregh.pharmacyapp;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -11,10 +12,16 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -124,11 +131,16 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
+
             case R.id.menu_references:
                 new AlertDialog.Builder(this)
                         .setTitle(R.string.references_title)
                         .setMessage("Ambrose PJ, Winter ME. Vancomycin. In:  Winter ME, ed. " +
-                                "Basic Clinical Pharmacokinetics. 5th ed. Baltimore, MD: Lippincott Williams & Wilkins; 2010.")
+                                "Basic Clinical Pharmacokinetics. 5th ed. Baltimore, MD: Lippincott Williams & Wilkins; 2010.\n\n" +
+                                "Rybak M, Lomaestro B, Rotschafer JC, et al.  Therapeutic monitoring of Vancomycin in adult patients: " +
+                                "A consensus review of the American Society of Health-System Pharmacists, " +
+                                "the Infectious Diseases Society of America, and the Society of Infectious Diseases Pharmacists.\n" +
+                                "Am J Health-Syst Pharm  2009;66:82-98.")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // continue with delete
@@ -136,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
                         })
                         .show();
                 return true;
+
             case R.id.menu_limitations:
                 new AlertDialog.Builder(this)
                         .setTitle(R.string.limitations_title)
@@ -145,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
                                 "- extremes of age, weight, and critically ill are more difficult to predict\n\n" +
                                 bullet + " If actual trough returns significantly different from what " +
                                 "was expected, use clinical judgement and consider redrawing level\n\n" +
-                                bullet + " Not yet validated in clinical studies")
+                                bullet + " Validation studies currently underway")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // continue with delete
@@ -153,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
                         })
                         .show();
                 return true;
+
             case R.id.menu_liability:
                 new AlertDialog.Builder(this)
                         .setTitle(R.string.liability_title)
@@ -169,36 +183,32 @@ public class MainActivity extends AppCompatActivity {
                         })
                         .show();
                 return true;
-            case R.id.menu_about:
-                new AlertDialog.Builder(this)
-                        .setTitle(R.string.about_calc)
-                        .setMessage(bullet + " Actual body weight is used for Vd unless patients are underweight\n\n" +
-                                bullet + " Ideal body weight is used for Cl\n\n" +
-                                bullet + " Infusion rate is defaulted to 1g/hour which may vary by institution\n\n" +
-                                bullet + " SCr is rounded up to 1mg/dL if ≥65 years old due to presumed decrease in muscle mass\n\n" +
-                                bullet + " Intermittent short infusion steady state equation is used for both calculations")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // continue with delete
-                            }
-                        })
-                        .show();
-                return true;
+
             case R.id.menu_learn_more:
-                new AlertDialog.Builder(this)
+                String url = "http://www.hughesmedicine.com";
+                String msg = "For information about other pharmacotherapy topics related to" +
+                        " Internal Medicine, please visit: \n" + url + "\n\n" +
+                        "App Coded and Designed by:\n" +
+                        "Dean Siroky\n" +
+                        "dsirokydroidapps@gmail.com\n\n" +
+                        "Product of HughesMedicine, LLC";
+
+                final SpannableString s = new SpannableString(msg);
+                Linkify.addLinks(s, Linkify.ALL);
+
+                final AlertDialog d = new AlertDialog.Builder(this)
                         .setTitle(R.string.more_info_title)
-                        .setMessage("For information about other pharmacotherapy topics related to " +
-                                "Internal Medicine, please visit HughesMedicine.com\n\n" +
-                                "App Coded and Designed by:\n" +
-                                "Dean Siroky\n" +
-                                "dsirokydroidapps@gmail.com")
+                        .setMessage(s)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // continue with delete
                             }
                         })
                         .show();
+
+                ((TextView) d.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

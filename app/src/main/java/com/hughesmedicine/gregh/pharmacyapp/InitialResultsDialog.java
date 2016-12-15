@@ -27,7 +27,7 @@ public class InitialResultsDialog extends DialogFragment {
     DataHandler DH;
     AlertDialog resultText;
     TextView ID, Gender, Age, SCr, Height, Weight, idealWeight, CrCl, HalfLife, TTSS, ESST;
-    TextView Dose, DoseInterval, Timestamp;
+    TextView Dose, DoseInterval, Timestamp, OORN;
     final private int REQUEST_CODE_ASK_PERMISSIONS = 1;
 
     @Override
@@ -52,6 +52,8 @@ public class InitialResultsDialog extends DialogFragment {
         HalfLife = (TextView) v.findViewById(R.id.Results_Half_Life);
         TTSS = (TextView) v.findViewById(R.id.Results_Time_to_Steady);
         ESST = (TextView) v.findViewById(R.id.Results_Estimated_Steady_State);
+        OORN = (TextView) v.findViewById(R.id.Outside_Of_Range_Notice);
+
 
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
@@ -75,6 +77,10 @@ public class InitialResultsDialog extends DialogFragment {
         TTSS.setText(String.valueOf(DH.TTSS) + " hrs");
         ESST.setText(String.valueOf(DH.ESST));
 
+        if ((DH.ESST < 10) || (DH.ESST) > 20){
+            OORN.setText("Outside of therapeutic range, adjust and try again!");
+        }
+
         TextView title = new TextView(DH.mActivity);
         title.setText("Initial Trough Calculation Results");
         title.setBackgroundColor(Color.DKGRAY);
@@ -89,7 +95,7 @@ public class InitialResultsDialog extends DialogFragment {
 
                 .setCustomTitle(title)
 
-                .setPositiveButton("Save",
+                .setPositiveButton("Email Results",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 resultText = AlertDialog.class.cast(dialog);

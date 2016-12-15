@@ -26,7 +26,7 @@ public class AdjustResultsDialog extends DialogFragment {
 
     DataHandler DH;
     AlertDialog resultText;
-    TextView ID, InitialDose, InitialDoseInterval, Timestamp, ASST, NewDose, NewDoseInterval, NewESST;
+    TextView ID, InitialDose, InitialDoseInterval, Timestamp, ASST, NewDose, NewDoseInterval, NewESST, OORN;
     final private int REQUEST_CODE_ASK_PERMISSIONS = 1;
 
     @Override
@@ -45,6 +45,7 @@ public class AdjustResultsDialog extends DialogFragment {
         NewDose = (TextView) v.findViewById(R.id.Results_Adjust_Dose);
         NewDoseInterval = (TextView) v.findViewById(R.id.Results_Adjust_Dose_Interval);
         NewESST = (TextView) v.findViewById(R.id.Results_New_Estimated_Steady_State);
+        OORN = (TextView) v.findViewById(R.id.Outside_Of_Range_Notice);
 
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
@@ -64,6 +65,10 @@ public class AdjustResultsDialog extends DialogFragment {
         NewESST.setText(String.valueOf(DH.newESST));
         ASST.setText(String.valueOf(DH.actualLabESST));
 
+        if ((DH.newESST < 10) || (DH.newESST) > 20){
+            OORN.setText("Outside of therapeutic range, adjust and try again!");
+        }
+
         TextView title = new TextView(DH.mActivity);
         title.setText("Adjustment Trough Calculation Results");
         title.setBackgroundColor(Color.DKGRAY);
@@ -78,7 +83,7 @@ public class AdjustResultsDialog extends DialogFragment {
 
                 .setCustomTitle(title)
 
-                .setPositiveButton("Save",
+                .setPositiveButton("Email Results",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
                                 resultText = AlertDialog.class.cast(dialog);

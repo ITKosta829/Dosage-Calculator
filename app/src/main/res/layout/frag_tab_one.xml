@@ -294,6 +294,33 @@
         android:background="#000000" />
 
     <LinearLayout
+        android:id="@+id/MiddleButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/Suggest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/black_rounded_button"
+            android:text="Suggest Dose &amp; Frequency"
+            android:textColor="#ffffff" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="#000000" />
+
+    <LinearLayout
         android:id="@+id/Dose_Fields"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -318,6 +345,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="2dp"
             android:layout_weight="1"
+            android:background="#d3d3d3"
             android:gravity="center"
             android:paddingStart="5dp" />
 
@@ -385,6 +413,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="2dp"
             android:layout_weight="1"
+            android:background="#d3d3d3"
             android:gravity="center"
             android:paddingStart="5dp" />
 

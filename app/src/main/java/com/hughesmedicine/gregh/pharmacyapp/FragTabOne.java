@@ -71,7 +71,7 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 DH.originalDoseSelection = Double.valueOf(doseSpinner.getSelectedItem().toString());
-                Log.d(MYTAG, "InitialDose Selection: "+DH.originalDoseSelection);
+                Log.d(MYTAG, "InitialDose Selection: " + DH.originalDoseSelection);
             }
 
             @Override
@@ -87,12 +87,20 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 DH.originalFrequencySelection = Integer.valueOf(frequencySpinner.getSelectedItem().toString());
-                Log.d(MYTAG, "InitialDose Frequency: "+DH.originalFrequencySelection);
+                Log.d(MYTAG, "InitialDose Frequency: " + DH.originalFrequencySelection);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+            }
+        });
+
+        Button suggest = (Button) mView.findViewById(R.id.Suggest);
+        suggest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getSuggestions();
             }
         });
 
@@ -186,10 +194,57 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
             DH.displayHeight = h;
             DH.displayWeight = w;
 
+            DH.functionToggle = "getValues";
+
             DH.setCalculationValues();
 
             InitialResultsDialog resultsDialog = new InitialResultsDialog();
             resultsDialog.show(DH.FM, "display");
+        }
+
+    }
+
+    public void getSuggestions() {
+
+        String a = ET_Age.getText().toString();
+        String s = ET_SCr.getText().toString();
+        String h = ET_Height.getText().toString();
+        String w = ET_Weight.getText().toString();
+
+        if (DH.gender == null || a.equals("") || s.equals("") || h.equals("") || w.equals("")) {
+            mToast.setText("Please enter missing values.");
+            mToast.show();
+        } else {
+
+            DH.age = Integer.valueOf(a);
+            DH.SCr = Double.valueOf(s);
+            DH.displayHeight = h;
+            DH.displayWeight = w;
+
+            DH.functionToggle = "getSuggestions";
+
+            DH.setCalculationValues();
+
+            Double doseWeight = DH.setDoseSpinnerWeight();
+
+            if (doseWeight < 624.9) doseSpinner.setSelection(0); // Set Selection to 500mg
+            if ((doseWeight > 625.0) && (doseWeight < 874.9))
+                doseSpinner.setSelection(1);  // Set Selection to 7500mg
+            if ((doseWeight > 850.0) && (doseWeight < 1124.9))
+                doseSpinner.setSelection(2);  // Set Selection to 1000mg
+            if ((doseWeight > 1125.0) && (doseWeight < 1374.9))
+                doseSpinner.setSelection(3);  // Set Selection to 1250mg
+            if ((doseWeight > 1375.0) && (doseWeight < 1624.9))
+                doseSpinner.setSelection(4);  // Set Selection to 1500mg
+            if (doseWeight > 1625.0) doseSpinner.setSelection(5);  // Set Selection to 2000mg
+
+
+            if (DH.CrCl_mLmin > 70.0)
+                frequencySpinner.setSelection(1);  // Set Frequency to 8 hours
+            if ((DH.CrCl_mLmin < 69.9) && (DH.CrCl_mLmin > 40.0 ))
+                frequencySpinner.setSelection(2); // Set Frequency to 12 hours
+            if (DH.CrCl_mLmin < 39.9)
+                frequencySpinner.setSelection(3); // Set Frequency to 24 hours
         }
 
 

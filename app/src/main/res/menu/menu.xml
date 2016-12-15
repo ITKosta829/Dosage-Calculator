@@ -11,9 +11,6 @@
         android:id="@+id/menu_liability"
         android:title="Liability" />
     <item
-        android:id="@+id/menu_about"
-        android:title="About Calculator" />
-    <item
         android:id="@+id/menu_learn_more"
         android:title="Learn More" />
 

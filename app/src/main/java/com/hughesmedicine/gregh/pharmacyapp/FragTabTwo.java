@@ -25,7 +25,7 @@ public class FragTabTwo extends Fragment implements OnCheckedChangeListener{
     DataHandler DH;
 
     Spinner originalDoseSpinner, newDoseSpinner, originalFrequencySpinner, newFrequencySpinner;
-    EditText ET_ID, ET_Weight, ET_Actual_ESST;
+    EditText ET_ID, ET_Age, ET_Weight, ET_Actual_ESST;
     SegmentedRadioGroup RG_Weight;
 
     Toast mToast;
@@ -46,6 +46,7 @@ public class FragTabTwo extends Fragment implements OnCheckedChangeListener{
         mToast = Toast.makeText(DH.mActivity, "", Toast.LENGTH_SHORT);
 
         ET_ID = (EditText) mView.findViewById(R.id.ID_Entry);
+        ET_Age = (EditText) mView.findViewById(R.id.Age_Entry);
         ET_Weight = (EditText) mView.findViewById(R.id.Weight_Entry);
         ET_Actual_ESST = (EditText) mView.findViewById(R.id.Actual_ESST_Entry);
 
@@ -185,6 +186,7 @@ public class FragTabTwo extends Fragment implements OnCheckedChangeListener{
     public void getValues() {
 
         String id = ET_ID.getText().toString();
+        String a = ET_Age.getText().toString();
         String w = ET_Weight.getText().toString();
         String e = ET_Actual_ESST.getText().toString();
 
@@ -202,6 +204,7 @@ public class FragTabTwo extends Fragment implements OnCheckedChangeListener{
             }
 
             DH.displayWeight = w;
+            DH.age = Integer.valueOf(a);
             DH.actualLabESST = Double.valueOf(e);
 
             DH.startFragTabTwoCalculations();

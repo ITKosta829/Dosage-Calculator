@@ -1,22 +1,25 @@
 package com.hughesmedicine.gregh.pharmacyapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Created by DeanC on 10/18/2016.
  */
 
-public class FragTabHome extends Fragment{
+public class FragTabHome extends Fragment {
 
     View mView;
     char bullet, square;
+    DataHandler DH;
 
     final String MYTAG = "SEE ALL VALUES";
 
@@ -29,10 +32,12 @@ public class FragTabHome extends Fragment{
 
         mView = inflater.inflate(R.layout.frag_tab_home, container, false);
 
+        DH = DataHandler.getInstance();
+
         bullet = '\u2022';
         square = '\u25AA';
 
-        TextView text = (TextView)mView.findViewById(R.id.text);
+        TextView text = (TextView) mView.findViewById(R.id.text);
 
         text.setText(square + " Use this tool to determine a Vancomycin regimen, estimate a trough, " +
                 "or adjust a regimen once a trough is obtained.\n\n" +
@@ -46,8 +51,9 @@ public class FragTabHome extends Fragment{
                 square + " Swipe to the middle tab if just starting a regimen and a trough is not yet obtained\n" +
                 square + " Swipe to the right tab if the patient is already receiving vancomycin, " +
                 "has a steady state trough from the lab, and you wish to adjust the regimen\n" +
-                square + " Use the menu in the upper right for more information about this tool\n\n" +
-                square + " Any saved images are stored in your Downloads Folder");
+                square + " Use the menu in the upper right for more information about this tool\n\n");
+
+        if (!DH.TOS)showTermsAndConditions();
 
         return mView;
     }
@@ -72,6 +78,55 @@ public class FragTabHome extends Fragment{
     @Override
     public void onStop() {
         super.onStop();
+    }
+
+    public void showTermsAndConditions() {
+
+        new AlertDialog.Builder(DH.mActivity)
+                .setTitle("Terms and Conditions")
+
+                .setMessage("Care has been taken to confirm the accuracy of the information " +
+                        "present.  However, the designer is not responsible for errors or " +
+                        "omissions or for any consequences from application of this information " +
+                        "and make no warranty with respect to the contents of the publication.  " +
+                        "Application in any particular situation remains the responsibility " +
+                        "of the practitioner and the treatments recommended are not universal recommendations.")
+
+                .setPositiveButton("Agree", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        DH.TOS = true;
+                        dialog.dismiss();
+                    }
+                })
+
+                .setNegativeButton("Refuse", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        DH.mActivity.finish();
+
+//                        android.os.Process.killProcess(android.os.Process.myPid());
+//                        System.exit(0);
+
+//                        Intent intent = new Intent(Intent.ACTION_MAIN);
+//                        intent.addCategory(Intent.CATEGORY_HOME);
+//                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                        startActivity(intent);
+                    }
+                })
+
+                .setOnKeyListener(new DialogInterface.OnKeyListener() {
+                    @Override
+                    public boolean onKey(DialogInterface dialogInterface, int keyCode, KeyEvent event) {
+                        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP)
+                            DH.mActivity.finish();
+                        return false;
+                    }
+                })
+
+                .setCancelable(false)
+
+                .show();
+
     }
 
 }
