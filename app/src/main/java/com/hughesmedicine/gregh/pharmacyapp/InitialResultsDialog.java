@@ -77,8 +77,11 @@ public class InitialResultsDialog extends DialogFragment {
         TTSS.setText(String.valueOf(DH.TTSS) + " hrs");
         ESST.setText(String.valueOf(DH.ESST));
 
-        if ((DH.ESST < 10) || (DH.ESST) > 20){
-            OORN.setText("Outside of therapeutic range, adjust and try again!");
+        if ((DH.ESST < 10) || (DH.ESST) > 20) {
+            OORN.setText("Outside of therapeutic range\n" +
+                    "(usually 10-20 mg/L or\n" +
+                    "15-20 mg/L if complicated),\n" +
+                    "adjust and try again!");
         }
 
         TextView title = new TextView(DH.mActivity);

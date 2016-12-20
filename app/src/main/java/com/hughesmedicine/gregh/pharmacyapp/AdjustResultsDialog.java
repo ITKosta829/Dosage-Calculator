@@ -65,8 +65,11 @@ public class AdjustResultsDialog extends DialogFragment {
         NewESST.setText(String.valueOf(DH.newESST));
         ASST.setText(String.valueOf(DH.actualLabESST));
 
-        if ((DH.newESST < 10) || (DH.newESST) > 20){
-            OORN.setText("Outside of therapeutic range, adjust and try again!");
+        if ((DH.newESST < 10) || (DH.newESST) > 20) {
+            OORN.setText("Outside of therapeutic range\n" +
+                    "(usually 10-20 mg/L or\n" +
+                    "15-20 mg/L if complicated),\n" +
+                    "adjust and try again!");
         }
 
         TextView title = new TextView(DH.mActivity);

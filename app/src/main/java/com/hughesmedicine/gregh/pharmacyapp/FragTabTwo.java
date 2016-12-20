@@ -118,7 +118,7 @@ public class FragTabTwo extends Fragment implements OnCheckedChangeListener{
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 DH.newFrequencySelection = Integer.valueOf(newFrequencySpinner.getSelectedItem().toString());
-                Log.d(MYTAG, "New InitialDose Frequency: "+DH.newFrequencySelection);
+                Log.d(MYTAG, "New InitialDose Frequency: " + DH.newFrequencySelection);
             }
 
             @Override
@@ -142,6 +142,9 @@ public class FragTabTwo extends Fragment implements OnCheckedChangeListener{
                 ET_ID.setText("");
                 ET_Weight.setText("");
                 ET_Actual_ESST.setText("");
+                ET_Age.setText("");
+                newDoseSpinner.setSelection(2);
+                newFrequencySpinner.setSelection(2);
             }
         });
 
@@ -193,7 +196,7 @@ public class FragTabTwo extends Fragment implements OnCheckedChangeListener{
         Log.d(MYTAG, "Weight: " + w + " Unit:" + DH.weightUnit);
         Log.d(MYTAG, "Actual ESST: " + e);
 
-        if (DH.weightUnit == null || w.equals("") || e.equals("")) {
+        if (DH.weightUnit == null || w.equals("") || a.equals("") || e.equals("")) {
             mToast.setText("Please enter missing values.");
             mToast.show();
         } else {

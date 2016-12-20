@@ -286,9 +286,9 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="4"
             android:paddingStart="5dp"
-            android:text="Serum Creatinine (must be stable) (mg/dL):"
+            android:text="Serum Creatinine (must be stable):"
             android:textStyle="bold" />
 
         <TextView

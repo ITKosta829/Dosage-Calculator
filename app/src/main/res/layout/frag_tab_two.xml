@@ -296,6 +296,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="2dp"
             android:layout_weight="1"
+            android:background="#d3d3d3"
             android:gravity="center"
             android:paddingStart="5dp" />
 
@@ -343,6 +344,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="2dp"
             android:layout_weight="1"
+            android:background="#d3d3d3"
             android:gravity="center"
             android:paddingStart="5dp" />
 

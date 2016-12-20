@@ -121,6 +121,8 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
                 ET_SCr.setText("");
                 ET_Height.setText("");
                 ET_Weight.setText("");
+                doseSpinner.setSelection(2);
+                frequencySpinner.setSelection(2);
             }
         });
 
@@ -180,7 +182,8 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
         String h = ET_Height.getText().toString();
         String w = ET_Weight.getText().toString();
 
-        if (DH.gender == null || a.equals("") || s.equals("") || h.equals("") || w.equals("")) {
+        if (DH.gender == null || DH.heightUnit == null || DH.weightUnit == null ||
+                a.equals("") || s.equals("") || h.equals("") || w.equals("")) {
             mToast.setText("Please enter missing values.");
             mToast.show();
         } else {
@@ -211,7 +214,8 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
         String h = ET_Height.getText().toString();
         String w = ET_Weight.getText().toString();
 
-        if (DH.gender == null || a.equals("") || s.equals("") || h.equals("") || w.equals("")) {
+        if (DH.gender == null || DH.heightUnit == null || DH.weightUnit == null ||
+                a.equals("") || s.equals("") || h.equals("") || w.equals("")) {
             mToast.setText("Please enter missing values.");
             mToast.show();
         } else {
@@ -241,7 +245,7 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
 
             if (DH.CrCl_mLmin > 70.0)
                 frequencySpinner.setSelection(1);  // Set Frequency to 8 hours
-            if ((DH.CrCl_mLmin < 69.9) && (DH.CrCl_mLmin > 40.0 ))
+            if ((DH.CrCl_mLmin < 69.9) && (DH.CrCl_mLmin > 40.0))
                 frequencySpinner.setSelection(2); // Set Frequency to 12 hours
             if (DH.CrCl_mLmin < 39.9)
                 frequencySpinner.setSelection(3); // Set Frequency to 24 hours
