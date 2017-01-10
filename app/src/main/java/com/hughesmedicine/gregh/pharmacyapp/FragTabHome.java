@@ -37,23 +37,26 @@ public class FragTabHome extends Fragment {
         bullet = '\u2022';
         square = '\u25AA';
 
+        TextView textA = (TextView) mView.findViewById(R.id.textA);
         TextView text1 = (TextView) mView.findViewById(R.id.text1);
         TextView text2 = (TextView) mView.findViewById(R.id.text2);
         TextView text3 = (TextView) mView.findViewById(R.id.text3);
         TextView text4 = (TextView) mView.findViewById(R.id.text4);
         TextView text5 = (TextView) mView.findViewById(R.id.text5);
 
-        text1.setText(square + " Use this tool to determine a Vancomycin regimen, estimate a trough, " +
-                "or adjust a regimen once a trough is obtained.\n");
+        textA.setText(square + " What this app does:");
 
-        text2.setText(square + " Instructions:\n");
+        text1.setText(square + " Use this tool to determine a Vancomycin regimen, estimate a trough, " +
+                "or adjust a regimen once a trough is obtained\n");
+
+        text2.setText(square + " Instructions:");
 
         text3.setText(square + " Swipe to the middle tab if just starting a regimen and a trough is not yet obtained\n" +
                 square + " Swipe to the right tab if the patient is already receiving vancomycin, " +
                 "has a steady state trough from the lab, and you wish to adjust the regimen\n" +
                 square + " Use the menu in the upper right for more information about this tool\n");
 
-        text4.setText(square + " Optimal drug monitoring:\n");
+        text4.setText(square + " Optimal drug monitoring:");
 
         text5.setText(square + " The trough should be obtained prior to the next dose once steady " +
                 "state is reached (often just before the fourth dose)\n" +

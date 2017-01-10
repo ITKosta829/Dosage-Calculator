@@ -280,7 +280,7 @@ public class DataHandler {
         Log.d("InitialESST", "d: " + d);
         ESST = (a * b * c) / d;
         Log.d("InitialESST", "ESST: " + ESST);
-        ESST = round(ESST, 3);
+        ESST = round(ESST, 2);
         Log.d("InitialESST", "ESST: " + ESST);
 
 
@@ -354,7 +354,7 @@ public class DataHandler {
         d = 1 - Math.exp(-pseudoActualKE * newFrequencySelection);
         Log.d("InitialESST", "d: " + d);
         newESST = (a * b * c) / d;
-        newESST = round(newESST, 3);
+        newESST = round(newESST, 2);
 
     }
 

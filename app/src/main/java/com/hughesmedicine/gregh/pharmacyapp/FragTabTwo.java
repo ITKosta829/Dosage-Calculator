@@ -143,6 +143,8 @@ public class FragTabTwo extends Fragment implements OnCheckedChangeListener{
                 ET_Weight.setText("");
                 ET_Actual_ESST.setText("");
                 ET_Age.setText("");
+                originalDoseSpinner.setSelection(2);
+                originalFrequencySpinner.setSelection(2);
                 newDoseSpinner.setSelection(2);
                 newFrequencySpinner.setSelection(2);
             }
@@ -209,6 +211,10 @@ public class FragTabTwo extends Fragment implements OnCheckedChangeListener{
             DH.displayWeight = w;
             DH.age = Integer.valueOf(a);
             DH.actualLabESST = Double.valueOf(e);
+            DH.originalDoseSelection = Double.valueOf(originalDoseSpinner.getSelectedItem().toString());
+            DH.originalFrequencySelection = Integer.valueOf(originalFrequencySpinner.getSelectedItem().toString());
+            DH.newDoseSelection = Double.valueOf(newDoseSpinner.getSelectedItem().toString());
+            DH.newFrequencySelection = Integer.valueOf(newFrequencySpinner.getSelectedItem().toString());
 
             DH.startFragTabTwoCalculations();
 

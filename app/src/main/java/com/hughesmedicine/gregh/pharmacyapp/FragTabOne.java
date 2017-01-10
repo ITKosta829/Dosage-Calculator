@@ -196,6 +196,8 @@ public class FragTabOne extends Fragment implements OnCheckedChangeListener {
             DH.SCr = Double.valueOf(s);
             DH.displayHeight = h;
             DH.displayWeight = w;
+            DH.originalDoseSelection = Double.valueOf(doseSpinner.getSelectedItem().toString());
+            DH.originalFrequencySelection = Integer.valueOf(frequencySpinner.getSelectedItem().toString());
 
             DH.functionToggle = "getValues";
 

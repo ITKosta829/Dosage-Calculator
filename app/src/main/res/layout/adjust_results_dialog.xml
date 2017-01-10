@@ -226,7 +226,7 @@
             android:layout_weight="6"
             android:background="#ffff00"
             android:paddingStart="5dp"
-            android:text="NEW Est. Steady State Trough (mg/dL):"
+            android:text="NEW Est. Steady State Trough (mg/L):"
             android:textStyle="bold" />
 
         <TextView
